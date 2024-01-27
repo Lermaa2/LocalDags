@@ -14,7 +14,7 @@ def print_hello():
     print("Librerías instaladas:")
     print(installed_libraries.stdout)
 
-    return 'Hello world from Airflow!''
+    return 'Hello world from Airflow!'
 
 default_args = {
     'owner': 'airflow',
