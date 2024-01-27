@@ -6,11 +6,11 @@ import subprocess
 
 def print_hello():
     # Ejecutar el comando 'python --version' y capturar la salida
-    python_version = subprocess.run(['python', '--version'], capture_output=True, text=True)
+    python_version = subprocess.run(['python', '--version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     print(python_version.stdout)
 
     # Ejecutar el comando 'pip freeze' y capturar la salida
-    installed_libraries = subprocess.run(['pip', 'freeze'], capture_output=True, text=True)
+    installed_libraries = subprocess.run(['pip', 'freeze'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     print("Librerías instaladas:")
     print(installed_libraries.stdout)
 
