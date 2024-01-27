@@ -2,14 +2,19 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
+import subprocess
 
 def print_hello():
-    a = !python --version
-    b = !pip freeze
-    print(a )
-    print("librerias:", b ) 
+    # Ejecutar el comando 'python --version' y capturar la salida
+    python_version = subprocess.run(['python', '--version'], capture_output=True, text=True)
+    print(python_version.stdout)
 
-    return 'Hello world from Airflow!'
+    # Ejecutar el comando 'pip freeze' y capturar la salida
+    installed_libraries = subprocess.run(['pip', 'freeze'], capture_output=True, text=True)
+    print("Librerías instaladas:")
+    print(installed_libraries.stdout)
+
+    return 'Hello world from Airflow!''
 
 default_args = {
     'owner': 'airflow',
