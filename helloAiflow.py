@@ -6,15 +6,16 @@ import subprocess
 
 def print_hello():
     # Ejecutar el comando 'python --version' y capturar la salida
-    python_version = subprocess.run(['python', '--version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    print(python_version.stdout)
+    python_version = subprocess.run(['python', '--version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(python_version.stdout.decode())
 
     # Ejecutar el comando 'pip freeze' y capturar la salida
-    installed_libraries = subprocess.run(['pip', 'freeze'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    installed_libraries = subprocess.run(['pip', 'freeze'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print("Librerías instaladas:")
-    print(installed_libraries.stdout)
+    print(installed_libraries.stdout.decode())
 
     return 'Hello world from Airflow!'
+
 
 default_args = {
     'owner': 'airflow',
