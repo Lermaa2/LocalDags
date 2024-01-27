@@ -4,6 +4,11 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
 
 def print_hello():
+    a = !python --version
+    b = !pip freeze
+    print(a )
+    print("librerias:", b ) 
+
     return 'Hello world from Airflow!'
 
 default_args = {
