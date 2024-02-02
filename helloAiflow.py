@@ -7,9 +7,12 @@ import subprocess
 def print_hello():
     # Ejecutar el comando 'python --version' y capturar la salida
     python_version = subprocess.run(['python', '--version'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    python_version = python_version.stdout.strip()
     # Ejecutar el comando 'pip freeze' y capturar la salida
     installed_libraries = subprocess.run(['pip', 'freeze'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return print(python_version.stdout.decode(),installed_libraries.stdout.decode())
+    installed_libraries = installed_libraries.stdout.strip()
+    final_output = f"{python_version}\tlibrerias: {installed_libraries}"
+    return final_output
 
 
 default_args = {
